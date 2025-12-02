@@ -1,40 +1,111 @@
-# Path to Oh My Zsh
-export ZSH="$HOME/.oh-my-zsh"
+# Powerlevel10k est désactivé en mode instantané afin d'autoriser les outils qui
+# écrivent dans le terminal au démarrage, comme Neofetch.
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
-# Theme
+export ZSH="${ZSH:-$HOME/.oh-my-zsh}"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Plugins
+# zsh-syntax-highlighting doit rester le dernier plugin de cette liste.
 plugins=(
   git
-  z
-  sudo
-  history
-  fzf
-  colored-man-pages
-  command-not-found
-  web-search
+  zsh-history-substring-search
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+if [[ -r "$ZSH/oh-my-zsh.sh" ]]; then
+  source "$ZSH/oh-my-zsh.sh"
+else
+  print -u2 "Oh My Zsh est introuvable dans $ZSH"
+fi
 
-# User configuration
-export EDITOR='nano'
+# Historique
+HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+HISTSIZE=200000
+SAVEHIST=200000
+setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_VERIFY SHARE_HISTORY
 
-# Aliases
-alias ll='ls -lah'
-alias gs='git status'
-alias gp='git pull'
-alias gc='git commit'
+# Complétion. Oh My Zsh initialise compinit ; ces options configurent son cache.
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+zstyle ':completion:*' rehash true
+
+[[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
+
+export EDITOR="vim"
+export VISUAL="$EDITOR"
+
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ll='ls -lah'
+alias gs='git status --short --branch'
+alias gp='git pull --ff-only'
 
-# Node.js, PHP, Python version display (used by Powerlevel10k)
-typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-  status command_execution_time node_version php_version python_version time
+if (( $+commands[eza] )); then
+  alias ls='eza --icons --group-directories-first'
+else
+  alias ls='ls --color=auto'
+fi
+
+if (( $+commands[batcat] )); then
+  alias bat='batcat --paging=never'
+elif (( $+commands[bat] )); then
+  alias bat='bat --paging=never'
+fi
+
+# Afficher les informations système une seule fois par session interactive.
+if [[ -o interactive && -z ${NEOFETCH_RAN:-} ]] && (( $+commands[neofetch] )); then
+  neofetch
+  export NEOFETCH_RAN=1
+fi
+
+# Charger NVM uniquement lors du premier appel à un outil Node.
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+
+_lazy_load_nvm() {
+  unfunction node npm npx corepack 2>/dev/null || true
+  [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+}
+
+if [[ -s "$NVM_DIR/nvm.sh" ]]; then
+  for command_name in node npm npx corepack; do
+    eval "
+      function ${command_name}() {
+        _lazy_load_nvm
+        command ${command_name} \"\$@\"
+      }
+    "
+  done
+  unset command_name
+fi
+
+# Chemins locaux, ajoutés une seule fois grâce au tableau unique de Zsh.
+typeset -U path PATH
+path=(
+  "$HOME/.local/bin"
+  "$HOME/bin"
+  "$HOME/.opencode/bin"
+  $path
 )
 
-# Enable Powerlevel10k config if available
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [[ -d "$HOME/.dotnet" ]]; then
+  export DOTNET_ROOT="$HOME/.dotnet"
+  path=("$DOTNET_ROOT" $path)
+fi
+
+if [[ -d /usr/lib/jvm/java-21-openjdk-amd64 ]]; then
+  export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+  path=("$JAVA_HOME/bin" $path)
+fi
+
+if [[ -d "$HOME/glassfish/glassfish7" ]]; then
+  export GLASSFISH_HOME="$HOME/glassfish/glassfish7"
+  path=("$GLASSFISH_HOME/bin" $path)
+fi
+
+if [[ -r /proc/version ]] && grep -qi microsoft /proc/version; then
+  (( $+commands[wslview] )) && export BROWSER=wslview
+fi
+
+# Surcharges propres à une machine : clés, SDK privés ou chemins non portables.
+[[ -r "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

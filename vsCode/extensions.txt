@@ -1,0 +1,35 @@
+# Interface
+Catppuccin.catppuccin-vsc
+miguelsolorio.fluent-icons
+pkief.material-icon-theme
+
+# Qualité et productivité
+dbaeumer.vscode-eslint
+eamodio.gitlens
+esbenp.prettier-vscode
+sonarsource.sonarlint-vscode
+usernamehw.errorlens
+wix.vscode-import-cost
+yzhang.markdown-all-in-one
+
+# Web et PHP
+bmewburn.vscode-intelephense-client
+bradlc.vscode-tailwindcss
+mblode.twig-language-2
+ritwickdey.liveserver
+thenouillet.symfony-vscode
+Vue.volar
+
+# Java, .NET, Python et données
+ms-dotnettools.csdevkit
+ms-python.python
+ms-python.vscode-pylance
+oracle.mysql-shell-for-vs-code
+redhat.java
+redhat.vscode-yaml
+
+# Conteneurs, WSL et outils
+ms-azuretools.vscode-containers
+ms-vscode-remote.remote-containers
+ms-vscode-remote.remote-wsl
+openai.chatgpt

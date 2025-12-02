@@ -1,0 +1,49 @@
+{
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/.sl",
+    "**/.repo",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/node_modules",
+    "**/vendor",
+    "**/.next",
+    "**/.output",
+    "**/.wxt",
+    "**/.astro",
+    "**/.netlify",
+    "**/dist",
+    "**/build",
+    "**/.gradle",
+    "**/.idea",
+    "**/.kotlin",
+    "**/target",
+    "**/obj",
+    "**/.venv",
+    "**/venv",
+    "**/__pycache__",
+    "**/*.egg-info",
+    "**/.pytest_cache",
+    "**/.mypy_cache",
+    "**/.ruff_cache",
+    "**/coverage",
+    "**/test-results",
+    "**/playwright-report",
+    "**/var/cache",
+    "**/var/log"
+  ],
+  "lsp": {
+    "jdtls": {
+      "settings": {
+        "java_home": "/usr/lib/jvm/java-21-openjdk-amd64",
+        "lombok_support": true
+      }
+    }
+  }
+}

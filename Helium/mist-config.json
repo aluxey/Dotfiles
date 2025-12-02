@@ -1,0 +1,80 @@
+{
+  "version": 5,
+  "exportedAt": "2026-08-13T00:00:00.000Z",
+  "name": "Aurélien",
+  "tabTitle": "Mist",
+  "theme": "midnight",
+  "unit": "C",
+  "clockFormat": "24",
+  "weatherLocation": null,
+  "autoFocusSearch": true,
+  "openShortcutsInCurrentTab": true,
+  "loadRemoteFavicons": false,
+  "visible": {
+    "clock": true,
+    "search": true,
+    "links": true,
+    "weather": false
+  },
+  "groups": [
+    {
+      "name": "Développement",
+      "links": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com"
+        },
+        {
+          "name": "MDN",
+          "url": "https://developer.mozilla.org"
+        },
+        {
+          "name": "npm",
+          "url": "https://www.npmjs.com"
+        },
+        {
+          "name": "Netlify",
+          "url": "https://app.netlify.com"
+        },
+        {
+          "name": "Vercel",
+          "url": "https://vercel.com/dashboard"
+        }
+      ]
+    },
+    {
+      "name": "Outils",
+      "links": [
+        {
+          "name": "ChatGPT",
+          "url": "https://chatgpt.com"
+        },
+        {
+          "name": "Claude",
+          "url": "https://claude.ai"
+        },
+        {
+          "name": "Proton Mail",
+          "url": "https://mail.proton.me"
+        }
+      ]
+    },
+    {
+      "name": "Quotidien",
+      "links": [
+        {
+          "name": "YouTube",
+          "url": "https://www.youtube.com"
+        },
+        {
+          "name": "Reddit",
+          "url": "https://www.reddit.com"
+        },
+        {
+          "name": "Gmail",
+          "url": "https://mail.google.com"
+        }
+      ]
+    }
+  ]
+}

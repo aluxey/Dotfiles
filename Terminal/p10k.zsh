@@ -1,4 +1,4 @@
-# Powerlevel10k Catppuccin-like theme (modifié)
+# Thème Powerlevel10k inspiré de Catppuccin Mocha.
 typeset -g POWERLEVEL9K_MODE=nerdfont-complete
 typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time node_version php_version python_version time)

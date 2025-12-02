@@ -1,37 +1,39 @@
-# Struct de la conf Mozilla Firefox
+# Configuration Firefox
 
-```md
+Ce dossier contient uniquement les préférences reproductibles du profil :
+
+```text
 firefox/
-├── profiles.ini
-├── profile-template/
-│   ├── prefs.js                 # about:config settings
-│   ├── chrome/
-│   │   └── userChrome.css       # UI customization
-│   ├── extensions/              # Extension XPI files
-│   └── containers.json          # Container configuration
+├── user.js
+└── userChrome.css
 ```
-## Prérequis
-- Firefox ≥ 124
-- Linux (Wayland conseillé) : `MOZ_ENABLE_WAYLAND=1`
-- Activer : `toolkit.legacyUserProfileCustomizations.stylesheets = true`
 
-## Installation manuelle
-1. Localiser ton profil Firefox (`about:profiles`)
-2. Copier `user.js` à la racine du profil.
-3. Créer le dossier `chrome/` dans le profil et y placer `userChrome.css`.
-4. Redémarrer Firefox.
+`user.js` est relu à chaque démarrage de Firefox. Une préférence supprimée de ce fichier peut donc rester dans `prefs.js` ; il faut alors la réinitialiser depuis `about:config`.
 
-## Rollback
-- Sauvegarder `prefs.js`, `user.js`, `logins.json`, `key4.db`, et `chrome/`.
-- Restaurer en remplaçant les fichiers par leur version de sauvegarde.
+## Installation
 
-## Profils recommandés
-- **Dev** : isolé, sans Sync, extensions dev.
-- **Perso** : avec Sync et extensions quotidiennes.
-- **Work** : pour le boulot, sandboxé.
+1. Fermer Firefox.
+2. Ouvrir `about:profiles` et repérer le **dossier racine** du profil utilisé.
+3. Sauvegarder au minimum `prefs.js`, l'ancien `user.js` et le dossier `chrome/`.
+4. Copier `user.js` à la racine du profil.
+5. Créer le dossier `chrome/` et y copier `userChrome.css`.
+6. Redémarrer Firefox.
 
-## Extensions clés
+La préférence `toolkit.legacyUserProfileCustomizations.stylesheets` présente dans `user.js` active automatiquement `userChrome.css`.
+
+## Choix de sécurité
+
+- HTTPS-Only, Global Privacy Control et protection contre le pistage sont activés.
+- Les cookies tiers sont partitionnés (`cookieBehavior = 5`) pour préserver davantage de compatibilité qu'un blocage total.
+- La télémétrie et les études sont désactivées.
+- WebRTC reste disponible pour les appels web.
+- Le débogage distant privilégié n'est pas activé dans un profil quotidien.
+
+## Extensions recommandées
+
 - uBlock Origin
 - Bitwarden
-- Multi-Account Containers (+ Containerise si besoin)
-- SponsorBlock (YouTube)
+- Firefox Multi-Account Containers
+- SponsorBlock
+
+Les extensions, sessions, cookies, mots de passe et fichiers `prefs.js` ne sont pas versionnés.

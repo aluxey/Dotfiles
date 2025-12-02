@@ -1,0 +1,103 @@
+{
+  "$help": "https://aka.ms/terminal-documentation",
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "alwaysShowNotificationIcon": false,
+  "copyFormatting": "none",
+  "copyOnSelect": false,
+  "defaultProfile": "{4ff56d04-d9cf-57ea-bae2-ad396374e7e3}",
+  "actions": [
+    {
+      "command": {
+        "action": "copy",
+        "singleLine": false
+      },
+      "id": "User.copy"
+    },
+    {
+      "command": "paste",
+      "id": "User.paste"
+    },
+    {
+      "command": "find",
+      "id": "User.find"
+    },
+    {
+      "command": {
+        "action": "splitPane",
+        "split": "auto",
+        "splitMode": "duplicate"
+      },
+      "id": "User.splitPane"
+    }
+  ],
+  "keybindings": [
+    {
+      "id": "User.copy",
+      "keys": "ctrl+c"
+    },
+    {
+      "id": "User.find",
+      "keys": "ctrl+shift+f"
+    },
+    {
+      "id": "User.paste",
+      "keys": "ctrl+v"
+    },
+    {
+      "id": "User.splitPane",
+      "keys": "alt+shift+d"
+    }
+  ],
+  "newTabMenu": [
+    {
+      "type": "remainingProfiles"
+    }
+  ],
+  "profiles": {
+    "defaults": {
+      "colorScheme": "Dracula",
+      "cursorShape": "filledBox",
+      "font": {
+        "face": "JetBrainsMonoNL Nerd Font Mono",
+        "size": 14
+      },
+      "opacity": 90,
+      "padding": "8, 8, 8, 8",
+      "useAcrylic": true
+    },
+    "list": [
+      {
+        "guid": "{4ff56d04-d9cf-57ea-bae2-ad396374e7e3}",
+        "hidden": false,
+        "name": "Ubuntu 22.04",
+        "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc"
+      }
+    ]
+  },
+  "schemes": [
+    {
+      "background": "#282A36",
+      "black": "#21222C",
+      "blue": "#BD93F9",
+      "brightBlack": "#6272A4",
+      "brightBlue": "#D6ACFF",
+      "brightCyan": "#A4FFFF",
+      "brightGreen": "#69FF94",
+      "brightPurple": "#FF92DF",
+      "brightRed": "#FF6E6E",
+      "brightWhite": "#FFFFFF",
+      "brightYellow": "#FFFFA5",
+      "cursorColor": "#FFFFFF",
+      "cyan": "#8BE9FD",
+      "foreground": "#F8F8F2",
+      "green": "#50FA7B",
+      "name": "Dracula",
+      "purple": "#FF79C6",
+      "red": "#FF5555",
+      "selectionBackground": "#44475A",
+      "white": "#F8F8F2",
+      "yellow": "#F1FA8C"
+    }
+  ],
+  "themes": []
+}

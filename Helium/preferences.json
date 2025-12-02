@@ -1,0 +1,26 @@
+{
+  "helium": {
+    "browser": {
+      "centered_location_bar": false,
+      "layout": 0,
+      "minimal_location_bar": true,
+      "vertical_collapsed": false,
+      "vertical_uncollapsed_width": 200
+    }
+  },
+  "bookmark_bar": {
+    "show_on_all_tabs": true,
+    "show_tab_groups": false
+  },
+  "browser": {
+    "theme": {
+      "is_grayscale2": true
+    }
+  },
+  "intl": {
+    "selected_languages": "fr-FR,fr,en-US,en"
+  },
+  "spellcheck": {
+    "dictionaries": ["fr-FR", "fr"]
+  }
+}
